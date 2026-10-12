@@ -1,5 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
-import { Handle, Position, type NodeProps } from "reactflow";
+import { Position, type NodeProps } from "reactflow";
+import { CustomHandle } from "../CustomHandle.tsx";
 
 export const PaymentInit = ({
   data: { amount },
@@ -16,7 +17,7 @@ export const PaymentInit = ({
           {amount}
         </Text>
       </Box>
-      <Handle type="source" position={Position.Right} />
+      <CustomHandle type="source" position={Position.Right} />
     </Box>
   );
 };
