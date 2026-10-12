@@ -1,5 +1,6 @@
-import { type NodeProps } from "reactflow";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { useReactFlow, type NodeProps } from "reactflow";
+import { Box, Flex, IconButton, Image, Text } from "@chakra-ui/react";
+import { X } from "react-bootstrap-icons";
 
 const PAYMENT_PROVIDER_IMAGE_MAP: { [code: string]: string } = {
   St: "https://cdn.worldvectorlogo.com/logos/stripe-2.svg",
@@ -11,10 +12,13 @@ const PAYMENT_PROVIDER_IMAGE_MAP: { [code: string]: string } = {
 
 export const PaymentProvider = ({
   data: { name, code },
+  id,
 }: NodeProps<{
   name: string;
   code: string;
 }>) => {
+  const { setNodes } = useReactFlow();
+
   return (
     <Flex
       borderRadius={"24px"}
@@ -39,6 +43,18 @@ export const PaymentProvider = ({
           {name}
         </Text>
       </Flex>
+      <IconButton
+        aria-label="Delete Payment Provider"
+        pointerEvents="all"
+        color="red"
+        bg="transparent"
+        size="sm"
+        onClick={() =>
+          setNodes((prevNodes) => prevNodes.filter((node) => node.id !== id))
+        }
+      >
+        <X />
+      </IconButton>
     </Flex>
   );
 };
