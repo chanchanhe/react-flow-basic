@@ -14,10 +14,12 @@ import "reactflow/dist/style.css";
 import { PaymentInit } from "./PaymentInit.tsx";
 import { initialEdges, initialNodes } from "./Workflow.constants.ts";
 import { PaymentCountry } from "./PaymentCountry.tsx";
+import { PaymentProvider } from "./PaymentProvider.tsx";
 
 const nodeTypes = {
   paymentInit: PaymentInit,
   paymentCountry: PaymentCountry,
+  paymentProvider: PaymentProvider,
 };
 
 export const Workflow = () => {
