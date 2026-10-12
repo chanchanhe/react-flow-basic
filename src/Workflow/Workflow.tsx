@@ -31,7 +31,7 @@ const edges: Edge[] = [
 export const Workflow = () => {
   return (
     <Box height="500px" width="500px" border="1px solid black">
-      <ReactFlow nodes={nodes} edges={edges} />
+      <ReactFlow nodes={nodes} edges={edges} fitView />
     </Box>
   );
 };
