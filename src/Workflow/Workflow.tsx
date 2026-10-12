@@ -4,12 +4,14 @@ import {
   Controls,
   MiniMap,
   ReactFlow,
+  useNodesState,
+  useEdgesState,
   type Edge,
   type Node,
 } from "reactflow";
 import "reactflow/dist/style.css";
 
-const nodes: Node[] = [
+const initialNodes: Node[] = [
   {
     id: "1",
     data: {
@@ -24,9 +26,16 @@ const nodes: Node[] = [
     },
     position: { x: 200, y: 200 },
   },
+  {
+    id: "3",
+    data: {
+      label: "Node 3",
+    },
+    position: { x: 300, y: 300 },
+  },
 ];
 
-const edges: Edge[] = [
+const initialEdges: Edge[] = [
   {
     id: "1-2",
     source: "1",
@@ -36,12 +45,21 @@ const edges: Edge[] = [
 ];
 
 export const Workflow = () => {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
   return (
     <Box height="500px" width="500px" border="1px solid black">
-      <ReactFlow nodes={nodes} edges={edges} fitView>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        fitView
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+      >
         <Background />
         <Controls />
-        <MiniMap />
+        {/* <MiniMap /> */}
       </ReactFlow>
     </Box>
   );
