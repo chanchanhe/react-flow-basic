@@ -15,11 +15,13 @@ import { PaymentInit } from "./PaymentInit.tsx";
 import { initialEdges, initialNodes } from "./Workflow.constants.ts";
 import { PaymentCountry } from "./PaymentCountry.tsx";
 import { PaymentProvider } from "./PaymentProvider.tsx";
+import { PaymentProviderSelect } from "./PaymentProviderSelect.tsx";
 
 const nodeTypes = {
   paymentInit: PaymentInit,
   paymentCountry: PaymentCountry,
   paymentProvider: PaymentProvider,
+  paymentProviderSelect: PaymentProviderSelect,
 };
 
 export const Workflow = () => {
