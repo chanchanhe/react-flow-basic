@@ -1,4 +1,4 @@
-import { useReactFlow, type NodeProps } from "reactflow";
+import { Handle, Position, useReactFlow, type NodeProps } from "reactflow";
 import { Box, Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import { X } from "react-bootstrap-icons";
 
@@ -55,6 +55,7 @@ export const PaymentProvider = ({
       >
         <X />
       </IconButton>
+      <Handle type="target" position={Position.Left} />
     </Flex>
   );
 };
