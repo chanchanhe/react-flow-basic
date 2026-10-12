@@ -39,4 +39,10 @@ export const initialNodes: Node[] = [
     position: { x: 550, y: 325 },
     type: "paymentProvider",
   },
+  {
+    id: "7",
+    data: {},
+    position: { x: 275, y: -100 },
+    type: "paymentProviderSelect",
+  },
 ];
