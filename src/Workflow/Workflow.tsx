@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import { useCallback } from "react";
 import {
   Background,
   Controls,
@@ -8,6 +9,8 @@ import {
   useEdgesState,
   type Edge,
   type Node,
+  addEdge,
+  type Connection,
 } from "reactflow";
 import "reactflow/dist/style.css";
 
@@ -48,6 +51,11 @@ export const Workflow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  const onConnect = useCallback((connection: Connection) => {
+    const edge = { ...connection, animated: true, id: `${edges.length} + 1` };
+    setEdges((prevEdges) => addEdge(edge, prevEdges));
+  }, []);
+
   return (
     <Box height="500px" width="500px" border="1px solid black">
       <ReactFlow
@@ -56,6 +64,7 @@ export const Workflow = () => {
         fitView
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
       >
         <Background />
         <Controls />
