@@ -16,6 +16,7 @@ import { initialEdges, initialNodes } from "./Workflow.constants.ts";
 import { PaymentCountry } from "./PaymentCountry.tsx";
 import { PaymentProvider } from "./PaymentProvider.tsx";
 import { PaymentProviderSelect } from "./PaymentProviderSelect.tsx";
+import { CustomEdge } from "./CustomEdge.tsx";
 
 const nodeTypes = {
   paymentInit: PaymentInit,
@@ -24,12 +25,21 @@ const nodeTypes = {
   paymentProviderSelect: PaymentProviderSelect,
 };
 
+const edgeTypes = {
+  customEdge: CustomEdge,
+};
+
 export const Workflow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const onConnect = useCallback((connection: Connection) => {
-    const edge = { ...connection, animated: true, id: `${edges.length} + 1` };
+    const edge = {
+      ...connection,
+      animated: true,
+      id: `${edges.length} + 1`,
+      type: "custom",
+    };
     setEdges((prevEdges) => addEdge(edge, prevEdges));
   }, []);
 
@@ -43,6 +53,7 @@ export const Workflow = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
       >
         <Background />
         <Controls />
