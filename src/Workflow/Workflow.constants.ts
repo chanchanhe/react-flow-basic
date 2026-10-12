@@ -9,4 +9,16 @@ export const initialNodes: Node[] = [
     data: { amount: 10 },
     type: "paymentInit",
   },
+  {
+    id: "2",
+    position: { x: 300, y: 20 },
+    data: { currency: "$", country: "United States", countryCode: "US" },
+    type: "paymentCountry",
+  },
+  {
+    id: "3",
+    position: { x: 300, y: 200 },
+    data: { currency: "€", country: "England", countryCode: "GB" },
+    type: "paymentCountry",
+  },
 ];
