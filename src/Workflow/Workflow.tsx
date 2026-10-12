@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { ReactFlow, type Node } from "reactflow";
+import { ReactFlow, type Edge, type Node } from "reactflow";
 import "reactflow/dist/style.css";
 
 const nodes: Node[] = [
@@ -19,10 +19,19 @@ const nodes: Node[] = [
   },
 ];
 
+const edges: Edge[] = [
+  {
+    id: "1-2",
+    source: "1",
+    target: "2",
+    animated: true,
+  },
+];
+
 export const Workflow = () => {
   return (
     <Box height="500px" width="500px" border="1px solid black">
-      <ReactFlow nodes={nodes} />
+      <ReactFlow nodes={nodes} edges={edges} />
     </Box>
   );
 };
