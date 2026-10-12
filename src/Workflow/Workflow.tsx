@@ -38,7 +38,7 @@ export const Workflow = () => {
       ...connection,
       animated: true,
       id: `${edges.length} + 1`,
-      type: "custom",
+      type: "customEdge",
     };
     setEdges((prevEdges) => addEdge(edge, prevEdges));
   }, []);
