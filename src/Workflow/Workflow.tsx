@@ -1,5 +1,12 @@
 import { Box } from "@chakra-ui/react";
-import { ReactFlow, type Edge, type Node } from "reactflow";
+import {
+  Background,
+  Controls,
+  MiniMap,
+  ReactFlow,
+  type Edge,
+  type Node,
+} from "reactflow";
 import "reactflow/dist/style.css";
 
 const nodes: Node[] = [
@@ -31,7 +38,11 @@ const edges: Edge[] = [
 export const Workflow = () => {
   return (
     <Box height="500px" width="500px" border="1px solid black">
-      <ReactFlow nodes={nodes} edges={edges} fitView />
+      <ReactFlow nodes={nodes} edges={edges} fitView>
+        <Background />
+        <Controls />
+        <MiniMap />
+      </ReactFlow>
     </Box>
   );
 };
